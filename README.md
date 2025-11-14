@@ -151,6 +151,26 @@ Exact solution vector:
 M = [5,\ 10,\ 20,\ 40,\ 80,\ 160].
 ```
 
+## Project Structure
+
+```
+bvp-solver-steepest-descent/
+│
+├── code/ # Julia implementation of the solver and analysis
+│ ├── matrixG.jl # Construction of matrix G and RHS vector
+│ ├── matrixG_analyse.jl # Spectral analysis, eigenvalues, SPD checks
+│ └── matrixG_results.jl # Numerical experiments and plot generation
+│
+├── plots/ # All generated figures
+│ └── ...
+│
+├── reports/ # Final academic report
+│ └── report.pdf
+│
+└── README.md # Project documentation
+
+```
+
 # Numerical Results
 
 ## Numerical vs Analytical Solution
