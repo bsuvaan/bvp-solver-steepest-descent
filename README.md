@@ -62,7 +62,7 @@ P_{i+\frac{1}{2}} (y_{i+1} - y_i)
 - q_i y_i
 = f_i.
 ```
-
+---
 
 After multiplying by 
 ```math 
@@ -87,7 +87,6 @@ To estimate the spectrum, we determine the minimal and maximal eigenvalues of th
 m = (p_0 + q_0)\Delta x^2,\qquad
 M = 4p_1 + q_1\Delta x^2.
 ```
-
 ---
 
 # Steepest Descent Method
@@ -146,15 +145,11 @@ Exact solution vector:
 \vec{\mathbf{u}} = (u(x_1), \dots, u(x_{M-1}))^T.
 ```
 
----
-
 # Grid Parameters
 
 ```math
 M = [5,\ 10,\ 20,\ 40,\ 80,\ 160].
 ```
-
----
 
 # Numerical Results
 
@@ -167,15 +162,51 @@ M = [5,\ 10,\ 20,\ 40,\ 80,\ 160].
 ![Solution M10](plots/m80.png)
 ![Solution M10](plots/m160.png)
 
+**Figure Description**
+
+The plot compares the numerical and analytical solutions of the boundary value problem for a coarse grid with \( M = 5, 10, 20, 40, 80, 160 \).
+
+- The **blue curve** represents the analytical solution \( u(x) \).
+- The **orange markers** represent the numerical solution obtained using the finite-difference scheme and the steepest descent method.
+
+Even on such a coarse grid, the discrete solution captures the general shape of the analytical function, with visible deviations due to the low resolution. As the grid is refined, the numerical points converge toward the analytical curve, demonstrating the expected second-order accuracy.
+
+
 ## Residual Norm
 
 ![Residuals](plots/df.png)
+
+The table presents the performance of the steepest descent method for various grid sizes \(M\).  
+For each grid, the following quantities are reported:
+
+- **\(M\)** — the number of intervals in the grid  
+- **\(\Delta x\)** — the corresponding grid spacing  
+- **\(K\)** — the number of iterations required to satisfy the stopping criterion  
+  \[
+  \|\mathbf{r}^{(k)}\|_\infty \le 10^{-6}
+  \]
+- **\(\|y_k - u\|_\infty\)** — the error between the numerical solution and the analytical solution  
+- **\(\|y_k - y_{k-1}\|_\infty\)** — the difference between the last two iterates  
+- **\(\|r_k\|_\infty\)** — the final residual norm
+
+These results demonstrate the expected second-order accuracy of the finite-difference discretization and confirm that the residual norm consistently reaches the prescribed tolerance for all grid resolutions.
+
 
 ## Log–log Error
 
 ![Error loglog](plots/logplot.png)
 
----
+**Figure Description**
+
+The log–log plot illustrates the dependence of the numerical error  
+\(\| y_k - u \|_\infty\)  
+on the grid step \(\Delta x\).
+
+Each point corresponds to one of the grids used in the experiment.  
+The nearly linear behavior of the graph indicates a power-law relationship between the error and the grid spacing.
+
+The slope of the line is close to **2**, confirming that the finite-difference discretization used in this work achieves **second-order accuracy**. As \(\Delta x\) decreases, the numerical solution converges to the analytical solution at the expected rate.
+
 
 # Convergence Analysis
 
@@ -183,7 +214,6 @@ M = [5,\ 10,\ 20,\ 40,\ 80,\ 160].
 - Steepest descent converges quickly  
 - Residual norms decrease monotonically  
 
----
 
 # Conclusions
 
